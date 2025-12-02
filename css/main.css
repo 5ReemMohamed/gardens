@@ -132,7 +132,9 @@ body {
 .hero-text {
     color: white;
     padding: 2rem;
+    text-align: right;
 }
+
 
 .tagline {
     display: flex;
@@ -142,8 +144,13 @@ body {
     font-weight: 600;
     margin-bottom: 1.5rem;
     font-style: italic;
+    justify-content: flex-start;
 }
 
+html[dir="ltr"] .tagline{
+    justify-content: flex-end;
+
+}
 .leaf-icon {
     font-size: 1.5rem;
 }
@@ -161,16 +168,30 @@ body {
     line-height: 1.8;
     margin-bottom: 2.5rem;
     opacity: 0.95;
-    max-width: 600px;
 }
+html[dir="ltr"] .hero-text,html[dir="ltr"] .hero-description{
+    text-align: left !important;
 
+}
 .hero-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
     align-items: center;
 }
+/* Arabic — RTL → icon AFTER text */
+html[dir="rtl"] .tagline {
+    flex-direction: row;
+}
 
+/* English — LTR → icon BEFORE text */
+html[dir="ltr"] .tagline {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+html[dir="ltr"] .hero-actions{
+    justify-content: flex-end;
+}
 .btn-view-services {
     background: linear-gradient(152deg, #f4be29 30.9%, #fff48d 118.23%);
     color: #2d2d2d;
@@ -321,6 +342,9 @@ body {
     display: none;
 }
 
+html[dir="ltr"] .years-badge{
+left: 100%;
+}
 @media screen and (min-width:768px) {
     .img-1 {
     transform: translateY(-20px);
@@ -967,7 +991,20 @@ form .heading p{
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     transition: all 0.3s ease;
 }
-
+.btn-translator{
+      position: fixed;
+    left: 20px;
+    bottom: 25px;
+     z-index: 999999;
+     background-color: #0F3714;
+     color: #fff;
+     padding: 10px 20px !important;
+      box-shadow: 0 4px 12px rgba(178, 192, 22, 0.2);
+}
+.btn-translator:hover{
+    background-color: #0F3714;
+     color: #fff;
+}
 .float-btn img {
     width: 32px;
     height: 32px;
@@ -997,4 +1034,66 @@ form .heading p{
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+  #langSwitcher {
+        padding: 6px 14px;
+        border-radius: 12px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+
+    /* Fix navbar direction on language switch */
+html[dir="rtl"] .navbar,
+html[dir="rtl"] .navbar-collapse,
+html[dir="rtl"] .nav-menu {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+html[dir="ltr"] .navbar,
+html[dir="ltr"] .navbar-collapse,
+html[dir="ltr"] .nav-menu {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+
+
+/* Align dropdown menu RTL */
+html[dir="rtl"] .dropdown-menu {
+    text-align: right;
+    direction: rtl;
+}
+
+html[dir="ltr"] .dropdown-menu {
+    text-align: left;
+    direction: ltr;
+}
+
+html[dir="ltr"] .cta::before{
+    left:30%;  
+}
+.service-6-shape{
+    bottom: -19%;
+   
+}
+.feature-box p{
+    color: white !important;
+}
+
+.site-footer{
+    background-color: #0F3714;
+    color: #fff;
+}
+
+.site-footer h5{
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.site-footer a{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.932);
 }
